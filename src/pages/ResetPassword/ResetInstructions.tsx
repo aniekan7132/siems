@@ -8,7 +8,7 @@ export default function ResetInstructions() {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    navigate("/set-new-password");
+    navigate("/");
   };
 
   return (
