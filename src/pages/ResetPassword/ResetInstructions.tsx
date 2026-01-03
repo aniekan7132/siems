@@ -7,10 +7,6 @@ import ResendEmail from "./components/ResendEmail";
 export default function ResetInstructions() {
   const navigate = useNavigate();
 
-  const handleContinue = () => {
-    navigate("/");
-  };
-
   return (
     <Flex
       minHeight="100vh"
@@ -50,7 +46,7 @@ export default function ResetInstructions() {
           bg="var(--custom-1)"
           w="full"
           borderRadius="8px"
-          onClick={handleContinue}
+          onClick={() => navigate("/")}
         >
           Continue
         </Button>
