@@ -21,6 +21,7 @@ export default function LoginPage() {
       ...prev,
       [name]: "",
     }));
+    setIsLoading(false)
   };
 
   return (
