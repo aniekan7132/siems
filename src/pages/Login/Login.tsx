@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormInputComponent } from "./components/FormInputComponent";
 import { Button, Flex, Box, Text } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,7 +23,7 @@ export default function LoginPage() {
       ...prev,
       [name]: "",
     }));
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (
@@ -56,16 +58,8 @@ export default function LoginPage() {
 
           <Button
             mt={4}
-            bg={
-              values.email || values.password
-                ? "blue.700"
-                : "gray.300"
-            }
-            color={
-              values.email || values.password
-                ? "white"
-                : "gray.500"
-            }
+            bg={values.email || values.password ? "blue.700" : "gray.300"}
+            color={values.email || values.password ? "white" : "gray.500"}
             _hover={
               values.email || values.password
                 ? { bg: "blue.600", opacity: 0.9 }
@@ -76,6 +70,7 @@ export default function LoginPage() {
             type="submit"
             borderRadius="8px"
             disabled={isLoading}
+            onClick={() => navigate("/dashboard")}
           >
             {isLoading ? <Spinner size="sm" /> : "Log In"}
           </Button>
@@ -88,12 +83,7 @@ export default function LoginPage() {
           color="gray.700"
         >
           Forgot password?{" "}
-          <Text
-            as="span"
-            color="blue.400"
-            cursor="pointer"
-            fontWeight="medium"
-          >
+          <Text as="span" color="blue.400" cursor="pointer" fontWeight="medium">
             <Link to="/forgot-password">Reset password</Link>
           </Text>
         </Text>

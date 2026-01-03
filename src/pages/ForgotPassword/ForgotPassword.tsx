@@ -12,6 +12,7 @@ const ForgotPassword = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
+    navigate("/reset-password");
   };
 
   return (
@@ -47,6 +48,7 @@ const ForgotPassword = () => {
             mb={2}
             bg="blue.700"
             borderRadius="md"
+            onSubmit={() => handleSubmit}
           >
             Continue
           </Button>
@@ -54,7 +56,7 @@ const ForgotPassword = () => {
 
         <Box mt={1} textAlign="center">
           <Button
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/")}
             variant="outline"
             width="100%"
             colorScheme="blue"

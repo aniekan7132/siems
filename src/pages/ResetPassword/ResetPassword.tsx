@@ -4,8 +4,10 @@ import AuthHeader from "@/components/AuthHeader/AuthHeader";
 import { InputComponent } from "./components/InputComponent";
 import AuthFooter from "@/components/AuthFooter/AuthFooter";
 import ResendEmail from "./components/ResendEmail";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     resetCode: "",
     newPassword: "",
@@ -33,7 +35,9 @@ const ResetPassword = () => {
     }));
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    navigate("/forgot-password/success");
+  };
 
   return (
     <Flex
